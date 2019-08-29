@@ -5,13 +5,31 @@
     <title>Don't Budge, BUDGET!</title>
     <script src="https://kit.fontawesome.com/8242e336e9.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
         <img src="hand-holding-usd-solid.svg" width="50" height="50" alt="">
     </a>
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -49,42 +67,21 @@
         <form class="form-inline my-2 my-lg-0">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign In</button>
         </form>
+
     </div>
 </nav>
 
 <div class="container">
-<br>
-<h1>Don't Budge, BUDGET!</h1>
-<h3>Instructions</h3>
-<div class="home">
-    <p>Click the button below to create the month's budget!</p>
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Start Now</button>
+    <br>
+    <h1>Rent</h1>
+    <button style="float: right" type="button" class="btn btn-success">Print Past Trends</button> <br>
+    <h4>Next Payment Due 09/25/2019</h4>
+    08/24/2019&nbsp;$1,000.00<br/>
+    07/22/2019&nbsp;$1,015.64<br/>
+    06/20/2019&nbsp;$880.40<br/>
+    ...
 </div>
-<div class="">
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Monthly Income</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-<form>
-                <div class="modal-body">
-                    <!-- This is the input for monthly income -->
-                    <div class="input-group mb-3"> <div class="input-group-prepend"> <span class="input-group-text">$</span> </div><input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"> <div class="input-group-append" required>  <span class="input-group-text">.00</span> </div></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="window.location.href ='budget.html'">Save</button>
-                </div>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
 </div>
 
 
