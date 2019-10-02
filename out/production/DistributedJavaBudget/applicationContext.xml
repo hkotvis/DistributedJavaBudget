@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="classpath:DistributedJavaBudget.properties"/>
-    <bean id="myConsoleService" class="springxml.services.FileLogService"></bean>
+    <bean id="myConsoleService" class="springxml.services.ConsoleLogService"></bean>
     <bean id="myExpenses" class="springxml.beans.Expenses">
         <property name="logService" ref="myConsoleService"/>
         <property name="expenseName" value="${e1.name}"/>

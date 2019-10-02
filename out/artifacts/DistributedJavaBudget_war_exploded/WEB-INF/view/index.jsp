@@ -1,35 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Don't Budge, BUDGET!</title>
     <script src="https://kit.fontawesome.com/8242e336e9.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
-
-</head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
-        <img src="WEB-INF/resources/img/hand-holding-usd-solid.svg" width="50" height="50" alt="">
+        <img src="resources/img/hand-holding-usd-solid.svg" width="50" height="50" alt="">
     </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -67,46 +48,45 @@
         <form class="form-inline my-2 my-lg-0">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign In</button>
         </form>
-
     </div>
 </nav>
 
 <div class="container">
     <br>
-    <h1>Current Budget</h1>
-    <button style="float: right" type="button" class="btn btn-success" onclick="window.location.href ='printPage.html'">Print Budget</button> <br/>
-    <h4>.</h4>
-    <table style="width:100%">
-        <tr>
-            <th>Expense</th>
-            <th>Amount <button style="float: right" type="button" class="btn btn-success" ><i class="fas fa-plus"></i></button></th>
+    <h1>Don't Budge, BUDGET!</h1>
+    <h3>Instructions</h3>
+    <div class="home">
+        <p>Click the button below to create the month's budget!</p>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Start Now</button>
+    </div>
+    <div class="">
 
-        </tr>
-        <tr>
-            <td> <a href="ItemDetail.html">Rent</a> </td>
-            <td>$1,000.00 <button type="button" class="btn" style="float:right;"><i class="fas fa-trash"></i></button><button type="button" class="btn" style="float:right;"><i class="fas fa-pen"></i></button></td>
-        </tr>
-        <tr>
-            <td><a href="">Phone</a></td>
-            <td>$70.00 <button type="button" class="btn" style="float:right;"><i class="fas fa-trash"></i></button><button type="button" class="btn" style="float:right;"><i class="fas fa-pen"></i></button></td>
-        </tr>
-        <tr>
-            <td><a href="">Groceries</a></td>
-            <td>$90.00 <button type="button" class="btn" style="float:right;"><i class="fas fa-trash"></i></button><button type="button" class="btn" style="float:right;"><i class="fas fa-pen"></i></button></td>
-        </tr>
-        <tr>
-            <td><a href="">Electric</a></td>
-            <td>$30.00 <button type="button" class="btn" style="float:right;"><i class="fas fa-trash"></i></button><button type="button" class="btn" style="float:right;"><i class="fas fa-pen"></i></button></td>
-        </tr>
-        <tr>
-            <td><a href="">Entertainment</a></td>
-            <td>$35.00 <button type="button" class="btn" style="float:right;"><i class="fas fa-trash"></i></button><button type="button" class="btn" style="float:right;"><i class="fas fa-pen"></i></button></td>
-    </table>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Monthly Income</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <!-- This is the input for monthly income -->
+                            <div class="input-group mb-3"> <div class="input-group-prepend"> <span class="input-group-text">$</span> </div><input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"> <div class="input-group-append" required>  <span class="input-group-text">.00</span> </div></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" onclick="window.location.href ='budget.html'">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-</div>
-
-</div>
-
+   </div> <!-- end of container -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

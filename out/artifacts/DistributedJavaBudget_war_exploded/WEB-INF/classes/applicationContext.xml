@@ -8,7 +8,6 @@
     <bean id="myConsoleService" class="springxml.services.ConsoleLogService"></bean>
     <bean id="myExpenses" class="springxml.beans.Expenses">
         <property name="logService" ref="myConsoleService"/>
-        <property name="id" value="${e1.id}"/>
         <property name="expenseName" value="${e1.name}"/>
     </bean>
 </beans>
