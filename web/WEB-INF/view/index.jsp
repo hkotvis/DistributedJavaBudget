@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -71,16 +72,20 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
-                        <div class="modal-body">
+                    <div class="modal-body">
                             <!-- This is the input for monthly income -->
-                            <div class="input-group mb-3"> <div class="input-group-prepend"> <span class="input-group-text">$</span> </div><input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"> <div class="input-group-append" required>  <span class="input-group-text">.00</span> </div></div>
+                            <form:form modelAttribute="inputBudget" action="showBudget">
+                            <div class="input-group mb-3"> <div class="input-group-prepend"><span class="input-group-text">$</span> </div>
+                                <form:input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" path="dollarAmt" />
+                                <div class="input-group-append" required>
+                                    <span class="input-group-text">.00</span> </div></div>
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" onclick="window.location.href ='budget.html'">Save</button>
+                                <input type="submit" class="btn btn-primary"  value="Save"/> <!--onclick="window.location.href ='budget.html'" -->
                             </div>
+                            </form:form>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
