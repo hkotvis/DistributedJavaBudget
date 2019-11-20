@@ -1,10 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>View Budget</title>
-</head>
-<body>
-Your Budget: ${inputBudget.dollarAmt}
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ include file="/WEB-INF/view/shared/header.jsp"%>
 
-</body>
-</html>
+<div class="container">
+    Your Budget: ${inputBudget.dollarAmt}
+</div>
+
+<%@ include file="/WEB-INF/view/shared/footer.jsp"%>
