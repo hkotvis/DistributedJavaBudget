@@ -43,12 +43,12 @@
     <bean id="myConversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <list>
-                <bean class="springxml.services.converter.StringToDateConverter"/>
+                <bean class="springmvc.dao.services.converter.StringToDateConverter"/>
             </list>
         </property>
     </bean>
 
-    <bean id="myConsoleService" class="springxml.services.ConsoleLogService"></bean>
+    <bean id="myConsoleService" class="springmvc.dao.services.ConsoleLogService"></bean>
     <bean id="myExpenses" class="springxml.beans.Expenses">
         <property name="logService" ref="myConsoleService"/>
         <property name="expenseName" value="${e1.name}"/>

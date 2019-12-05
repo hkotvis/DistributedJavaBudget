@@ -1,8 +1,8 @@
 package hibernate;
 
-import hibernate.entity.Expenses;
-import hibernate.entity.UserExpenses;
-import hibernate.entity.UserInfo;
+import springmvc.entity.Expenses;
+import springmvc.entity.UserExpenses;
+import springmvc.entity.UserInfo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -155,7 +155,7 @@ public class CRUD {
         if (theUserExpense != null) {
             theUserExpense.setAmountMonthly(theUserExpense.getAmountMonthly());
             theUserExpense.setMonth(theUserExpense.getMonth());
-            theUserExpense.setCustomExpenseName(theUserExpense.getCustomExpenseName());
+            theUserExpense.setExpenseAmount(theUserExpense.getExpenseAmount());
 
         }
         session.getTransaction().commit();

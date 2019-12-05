@@ -1,6 +1,6 @@
 package springxml.beans;
 
-import springxml.services.LogService;
+import springmvc.services.LogService;
 
 public class UserInfo {
     private LogService logService;

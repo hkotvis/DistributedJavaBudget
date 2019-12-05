@@ -25,7 +25,7 @@
     <!-- Hibernate session factory bean -->
     <bean id="mySessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="myDataSource"/>
-        <property name="packagesToScan" value="hibernate.entity" />
+        <property name="packagesToScan" value="springmvc.entity" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</prop>
@@ -43,12 +43,12 @@
     <bean id="myConversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <list>
-                <bean class="springxml.services.converter.StringToDateConverter"/>
+                <bean class="springmvc.services.converter.StringToDateConverter"/>
             </list>
         </property>
     </bean>
 
-    <bean id="myConsoleService" class="springxml.services.ConsoleLogService"></bean>
+    <bean id="myConsoleService" class="springmvc.services.ConsoleLogService"></bean>
     <bean id="myExpenses" class="springxml.beans.Expenses">
         <property name="logService" ref="myConsoleService"/>
         <property name="expenseName" value="${e1.name}"/>
