@@ -25,9 +25,9 @@
                     </div>
                     <div class="modal-body">
                             <!-- This is the input for monthly income -->
-                            <form:form modelAttribute="inputBudget" action="showBudget">
+                            <form:form modelAttribute="inputBudget" action="budget/showBudget">
                             <div class="input-group mb-3"> <div class="input-group-prepend"><span class="input-group-text">$</span> </div>
-                                <form:input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" path="dollarAmt" />
+                                <form:input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" path="amountMonthly" />
                                 <div class="input-group-append" required>
                                     <span class="input-group-text">.00</span> </div></div>
 

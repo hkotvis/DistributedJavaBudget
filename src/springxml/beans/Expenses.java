@@ -1,6 +1,6 @@
 package springxml.beans;
 
-import springxml.services.LogService;
+import springmvc.services.LogService;
 
 /*
 reate a private field of your service interface type

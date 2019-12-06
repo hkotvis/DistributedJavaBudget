@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/view/shared/header.jsp"%>
 
 <div class="container">
-    Your Budget: ${inputBudget.dollarAmt}
+    Your Budget: ${inputBudget.amountMonthly}
 </div>
 
 <%@ include file="/WEB-INF/view/shared/footer.jsp"%>
