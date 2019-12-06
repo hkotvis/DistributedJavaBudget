@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Wed Nov 20 13:35:29 CST 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.1.3 - (1853019): instance a816c00e-016e-8a50-0168-0000030bf448 
-on database directory C:\Users\kotvi\OneDrive - Waukesha County Technical College\DistributedJavaBudget\lib\budget with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
-Loaded from file:/C:/Users/kotvi/OneDrive%20-%20Waukesha%20County%20Technical%20College/DistributedJavaBudget/lib/derby.jar
+Fri Dec 06 00:59:45 CST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.1.3 - (1853019): instance a816c00e-016e-da01-de0d-00000adf9a00 
+on database directory C:\Users\moogi\IdeaProjects\HKotvis\lib\budget with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
+Loaded from file:/C:/Users/moogi/IdeaProjects/HKotvis/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=12.0.2+10
-user.dir=C:\Users\kotvi\OneDrive - Waukesha County Technical College\DistributedJavaBudget
+user.dir=C:\Users\moogi\IdeaProjects\HKotvis
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0

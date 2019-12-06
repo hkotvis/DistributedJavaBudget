@@ -13,7 +13,7 @@ import java.sql.SQLException;
 @WebServlet(name = "ListServlet", urlPatterns = "/list")
 public class ListServlet extends HttpServlet {
     private final String DRIVER_NAME = "jdbc:derby:";
-    private final String DATABASE_PATH = "/WEB-INF/lib/budget";
+    private final String DATABASE_PATH = "/WEB-INF/lib/userExpenses";
     private final String USER = "hailey";
     private final String PW = "hailey";
 

@@ -1,5 +1,6 @@
 package springmvc.dao;
 
+import jdk.jshell.ExpressionSnippet;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -16,7 +17,7 @@ public class BudgetDAOImpl implements BudgetDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public List<UserExpenses> getExpenses() {
+    public List<UserExpenses> getUserExpenses() {
         Session session = sessionFactory.getCurrentSession();
         List<UserExpenses> expensesList = session.createQuery("from UserExpenses", UserExpenses.class).getResultList();
         return expensesList;
@@ -30,6 +31,19 @@ public class BudgetDAOImpl implements BudgetDAO {
     }
 
     @Override
+    public Expenses getExpenses(int theId) {
+        Session session = sessionFactory.getCurrentSession();
+
+        return session.get(Expenses.class, theId);
+    }
+
+    public List<Expenses> getExpenses() {
+        Session session = sessionFactory.getCurrentSession();
+
+        return session.createQuery("from Expenses").getResultList();
+    }
+
+    @Override
     public List<Expenses> getExpensesByName(String theSearchTerm) {
         return null;
     }
@@ -37,9 +51,9 @@ public class BudgetDAOImpl implements BudgetDAO {
     @Override
     public void saveExpense(UserExpenses theBudget) {
         Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(theBudget.getExpenses());
         session.saveOrUpdate(theBudget);
     }
-
 
 
     @Override

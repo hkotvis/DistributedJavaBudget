@@ -33,7 +33,7 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <input type="submit" class="btn btn-primary"  value="Save"/> <!--onclick="window.location.href ='budget.html'" -->
+                                <input type="submit" class="btn btn-primary"  value="Save"/> <!--onclick="window.location.href ='userExpenses.html'" -->
                             </div>
                             </form:form>
                         </div>
