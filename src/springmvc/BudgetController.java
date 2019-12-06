@@ -5,14 +5,12 @@ import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import springmvc.entity.Expenses;
-import springmvc.services.BudgetService;
 import springmvc.entity.UserExpenses;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+import springmvc.services.BudgetService;
+
 import java.util.List;
 
 @Controller
@@ -23,7 +21,7 @@ public class BudgetController {
     private BudgetService budgetService;
 
     @RequestMapping("/showBudget")
-    public String showBudget(@ModelAttribute ("inputBudget") Budget inputBudget){
+    public String showBudget(@ModelAttribute ("inputBudget") UserExpenses inputBudget){
         return "view-budget";
     }
 
@@ -36,16 +34,16 @@ public class BudgetController {
 
     @GetMapping("/delete")
     public String deleteExpense(@RequestParam("userExpenseId") int theId) {
-        // Delete the donut
+        // Delete the expense
         budgetService.deleteExpense(theId);
-
         return "redirect:/budget/budgetBreakdown";
     }
 
 
     @RequestMapping("/showAddExpenseForm")
-    public String showAddDonutForm(Model theModel) {
-        Budget theBudget = new Budget();
+    public String showAddExpenseForm(Model theModel) {
+        UserExpenses theBudget = new UserExpenses();
+        theBudget.setExpenses(new Expenses());
 
         theModel.addAttribute("budget", theBudget);
 
@@ -53,41 +51,31 @@ public class BudgetController {
     }
 
     @RequestMapping("/showUpdateExpenseForm")
-    public String showUpdateDonutForm(@RequestParam("donutId") int theId,
+    public String showUpdateExpenseForm(@RequestParam("userExpenseId") int theId,
                                       Model theModel) {
-        // Get donut from the database
-        Budget theBudget = budgetService.getExpense(theId);
+        // Get expense from the database
+        UserExpenses theBudget = budgetService.getExpense(theId);
 
-        // Set donut as a model attribute to pre-populate the form
-        theModel.addAttribute("donut", theBudget);
+        // Set expense as a model attribute to pre-populate the form
+        theModel.addAttribute("budget", theBudget);
 
         // Return the view
         return "expense-form";
     }
 
 
-    @PostMapping("/budget/save")
-    public String saveDonut(@Valid @ModelAttribute("expense") Expenses theBudget,
-                            BindingResult bindingResult,
-                            HttpServletRequest request,
-                            Model theModel) {
-        // Any validation errors?
-        if (bindingResult.hasErrors()) {
-            // Display the errors in the console
-            System.out.println(bindingResult);
+    @PostMapping("/save")
+    public String saveBudget(@ModelAttribute("budget") UserExpenses theBudget
+                           // BindingResult bindingResult,
+                            //HttpServletRequest request,
+                            //Model theModel
+                             ) {
 
-            // Send back to form with error messages
-            return "expense-form";
-        }
-
-        // Find the complete path of the application
-        String applicationPath = request.getServletContext().getRealPath("/");
-
-        // Use the service to save the donut
+        // Use the service to save the expense
         budgetService.saveExpense(theBudget);
 
-        // Redirect back to the donut list
-        return "redirect:/donut/list";
+        // Redirect back to the expense list
+        return "redirect:/budget/budgetBreakdown";
     }
 
     @GetMapping("/search")

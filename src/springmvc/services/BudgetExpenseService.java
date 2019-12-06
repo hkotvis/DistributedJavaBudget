@@ -5,7 +5,6 @@ import springmvc.entity.UserExpenses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import springmvc.Budget;
 import springmvc.dao.BudgetDAO;
 
 
@@ -24,7 +23,7 @@ public class BudgetExpenseService implements BudgetService{
 
     @Override
     @Transactional
-    public Budget getExpense(int theId) {
+    public UserExpenses getExpense(int theId) {
         return budgetDAO.getExpense(theId);
     }
 
@@ -43,7 +42,7 @@ public class BudgetExpenseService implements BudgetService{
 
     @Override
     @Transactional
-    public void saveExpense(Expenses theExpense) {
+    public void saveExpense(UserExpenses theExpense) {
         budgetDAO.saveExpense(theExpense);
     }
 }

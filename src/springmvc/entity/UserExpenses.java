@@ -8,7 +8,7 @@ public class UserExpenses {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userExpenseId")
-    private int id;
+    private int userExpenseId;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "expenseId")
     private Expenses expenses;
@@ -20,26 +20,20 @@ public class UserExpenses {
     @Column(name = "month")
     private String month;
     @Column(name = "expenseAmount")
-    private String expenseAmount;
+    private int expenseAmount;
 
     public UserExpenses(){
         // no-arg constructor
     }
 
-    public UserExpenses( int amountMonthly, String month, String expenseAmount) {
+    public UserExpenses( int amountMonthly, String month, int expenseAmount) {
         this.amountMonthly = amountMonthly;
         this.month = month;
         this.expenseAmount = expenseAmount;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    public int getUserExpenseId() {return userExpenseId; }
     public Expenses getExpenses() {
         return expenses;
     }
@@ -72,18 +66,18 @@ public class UserExpenses {
         this.month = month;
     }
 
-    public String getExpenseAmount() {
+    public int getExpenseAmount() {
         return expenseAmount;
     }
 
-    public void setExpenseAmount(String expenseAmount) {
+    public void setExpenseAmount(int expenseAmount) {
         this.expenseAmount = expenseAmount;
     }
 
     @Override
     public String toString() {
         return "UserExpenses{" +
-                "id=" + id +
+                "userExpenseId=" + userExpenseId +
                 ", expenses=" + expenses +
                 ", userInfo=" + userInfo +
                 ", amountMonthly=" + amountMonthly +

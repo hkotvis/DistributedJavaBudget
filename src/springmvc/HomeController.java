@@ -2,8 +2,8 @@ package springmvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import springmvc.entity.UserExpenses;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 public class HomeController {
     @RequestMapping("/")
     public String showHomePage(Model model) {
-        Budget theBudge = new Budget();
+        UserExpenses theBudge = new UserExpenses();
         model.addAttribute("inputBudget", theBudge);
         return "index";
     }

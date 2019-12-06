@@ -125,13 +125,13 @@ public class CRUD {
         session.beginTransaction();
         UserInfo userInfo = session.get(UserInfo.class, 1);
         Expenses expenses = session.get(Expenses.class, 3);
-        UserExpenses userExpenses = new UserExpenses(850, "January", "-");
+        UserExpenses userExpenses = new UserExpenses(850, "January", 0);
         userExpenses.setUserInfo(userInfo);
         userExpenses.setExpenses(expenses);
         session.save(userExpenses);
 
         session.getTransaction().commit();
-        return userExpenses.getId();
+        return userExpenses.getUserExpenseId();
     }
     private void readUserExpense(int userExpenseId){
         Session session = factory.getCurrentSession();
