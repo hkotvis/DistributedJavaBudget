@@ -1,8 +1,8 @@
 package hibernate;
 
-import hibernate.entity.Expenses;
-import hibernate.entity.UserExpenses;
-import hibernate.entity.UserInfo;
+import springmvc.entity.Expenses;
+import springmvc.entity.UserExpenses;
+import springmvc.entity.UserInfo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -125,13 +125,13 @@ public class CRUD {
         session.beginTransaction();
         UserInfo userInfo = session.get(UserInfo.class, 1);
         Expenses expenses = session.get(Expenses.class, 3);
-        UserExpenses userExpenses = new UserExpenses(850, "January", "-");
+        UserExpenses userExpenses = new UserExpenses(850, "January", 0);
         userExpenses.setUserInfo(userInfo);
         userExpenses.setExpenses(expenses);
         session.save(userExpenses);
 
         session.getTransaction().commit();
-        return userExpenses.getId();
+        return userExpenses.getUserExpenseId();
     }
     private void readUserExpense(int userExpenseId){
         Session session = factory.getCurrentSession();
@@ -155,7 +155,7 @@ public class CRUD {
         if (theUserExpense != null) {
             theUserExpense.setAmountMonthly(theUserExpense.getAmountMonthly());
             theUserExpense.setMonth(theUserExpense.getMonth());
-            theUserExpense.setCustomExpenseName(theUserExpense.getCustomExpenseName());
+            theUserExpense.setExpenseAmount(theUserExpense.getExpenseAmount());
 
         }
         session.getTransaction().commit();
