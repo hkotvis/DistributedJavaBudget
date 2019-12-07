@@ -1,6 +1,8 @@
 package springmvc.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "expenses")
@@ -9,6 +11,8 @@ public class Expenses {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "expenseId")
     private int expenseId;
+    @NotNull(message = "required")
+    @Size(min = 1, message = "expense must have a name")
     @Column(name = "expenseName")
     private String expenseName;
 

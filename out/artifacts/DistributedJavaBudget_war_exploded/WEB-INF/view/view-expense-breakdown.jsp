@@ -6,7 +6,7 @@
 <div class="container">
     <br>
     <h1>This Month's Budget: ${inputBudget.amountMonthly}</h1>
-    <h3>Remaining Budget: </h3>
+    <h5>Remaining Budget: </h5>
     <form:form action="search" method="GET">
         Search Expenses <br>
         <input type="search" class="form-control" name="searchTerm"/>
@@ -22,9 +22,6 @@
         </tr>
 
         <c:forEach var="tempExp" items="${expenses}">
-
-            <!-- construct an "update" link with donut id -->
-            <!-- c:url is same as JSP's response.encodeURL() -->
             <c:url var="updateLink" value="/budget/showUpdateExpenseForm">
                 <c:param name="userExpenseId" value="${tempExp.userExpenseId}"/>
             </c:url>

@@ -25,8 +25,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" value="Save" class="btn btn-primary">
-                    &nbsp;<button type="button" class="btn btn-outline-secondary">Cancel</button>
+                    <input type="submit" value="Save" class="btn btn-primary" />
                 </td>
             </tr>
         </table>

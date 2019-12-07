@@ -12,7 +12,6 @@ public interface BudgetDAO {
     void deleteExpense(int theId);
 
     List<Expenses> getExpensesByName(String theSearchTerm);
-
     List<UserExpenses> getUserExpenses();
 
     List<Expenses> getExpenses();

@@ -1,6 +1,9 @@
 package springmvc.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "userExpenses")
@@ -19,8 +22,12 @@ public class UserExpenses {
     private int amountMonthly;
     @Column(name = "month")
     private String month;
+    @NotNull(message = "required")
+    @Min(value = 1, message = "must be greater than 0")
     @Column(name = "expenseAmount")
     private int expenseAmount;
+    @NotNull(message = "required")
+    @Size(min = 1, message = "must add details")
     @Column(name = "details")
     private String details;
     public UserExpenses(){

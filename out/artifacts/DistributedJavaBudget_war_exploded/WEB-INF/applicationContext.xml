@@ -50,6 +50,7 @@
     <!-- Enable transactional annotations -->
     <tx:annotation-driven transaction-manager="myTransactionManager"/>
 
+    <mvc:annotation-driven conversion-service="myConversionService"/>
 
     <!-- Beans for converting from Strings to entity objects -->
     <bean id="myConversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">

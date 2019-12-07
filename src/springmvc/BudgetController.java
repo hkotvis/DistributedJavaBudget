@@ -5,12 +5,14 @@ import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import springmvc.entity.Expenses;
 import springmvc.entity.UserExpenses;
 import springmvc.services.BudgetService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -66,11 +68,23 @@ public class BudgetController {
 
 
     @PostMapping("/save")
-    public String saveBudget(@ModelAttribute("userExpenses") UserExpenses theBudget
-                           // BindingResult bindingResult,
+    public String saveBudget(@Valid @ModelAttribute("userExpenses") UserExpenses theBudget,
+                           BindingResult bindingResult,
                             //HttpServletRequest request,
-                            //Model theModel
+                            Model theModel
                              ) {
+
+        if (bindingResult.hasErrors()) {
+            // Display the errors in the console
+            System.out.println(bindingResult);
+
+            // Put list of donut shops back in the new model
+            theModel.addAttribute("userExpenses", theBudget);
+            theModel.addAttribute("expensesList", budgetService.getExpenses());
+
+            // Send back to form with error messages
+            return "expense-form";
+        }
         // Use the service to save the expense
         budgetService.saveExpense(theBudget);
 
