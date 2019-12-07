@@ -1,6 +1,5 @@
 package springmvc.dao;
 
-import jdk.jshell.ExpressionSnippet;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -45,7 +44,15 @@ public class BudgetDAOImpl implements BudgetDAO {
 
     @Override
     public List<Expenses> getExpensesByName(String theSearchTerm) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+
+        // Add wildcards and make search term lowercase (for case insensitivity)
+        theSearchTerm = "%" + theSearchTerm.toLowerCase() + "%";
+
+        Query<Expenses> query = session.createQuery("from Expenses where lower(expenseName) like :nameToSearch");
+        query.setParameter("nameToSearch", theSearchTerm);
+
+        return query.getResultList();
     }
 
     @Override

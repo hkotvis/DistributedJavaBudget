@@ -9,13 +9,18 @@
         <table>
             <tr>
                 <td><label>Expense Name</label></td>
-                <td><form:select path="expenses" items="${expensesList}" itemLabel="expenseName" itemValue="expenseId"/>
+                <td><form:select path="expenses" class="form-control" items="${expensesList}" itemLabel="expenseName" itemValue="expenseId"/>
                     <form:errors path="expenses" style="color: red;"/></td>
             </tr>
             <tr>
                 <td><label>Expense Amount</label></td>
                 <td><form:input class="form-control" path="expenseAmount"/>
                     <form:errors path="expenseAmount" style="color: red;"/></td>
+            </tr>
+            <tr>
+                <td><label>Expense Details</label></td>
+                <td><form:input class="form-control" path="details"/>
+                    <form:errors path="details" style="color: red;"/></td>
             </tr>
             <tr>
                 <td></td>

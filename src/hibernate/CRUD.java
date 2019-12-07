@@ -125,7 +125,7 @@ public class CRUD {
         session.beginTransaction();
         UserInfo userInfo = session.get(UserInfo.class, 1);
         Expenses expenses = session.get(Expenses.class, 3);
-        UserExpenses userExpenses = new UserExpenses(850, "January", 0);
+        UserExpenses userExpenses = new UserExpenses(850, "January", 0, "Some details");
         userExpenses.setUserInfo(userInfo);
         userExpenses.setExpenses(expenses);
         session.save(userExpenses);

@@ -21,15 +21,17 @@ public class UserExpenses {
     private String month;
     @Column(name = "expenseAmount")
     private int expenseAmount;
-
+    @Column(name = "details")
+    private String details;
     public UserExpenses(){
         // no-arg constructor
     }
 
-    public UserExpenses( int amountMonthly, String month, int expenseAmount) {
+    public UserExpenses( int amountMonthly, String month, int expenseAmount, String details) {
         this.amountMonthly = amountMonthly;
         this.month = month;
         this.expenseAmount = expenseAmount;
+        this.details = details;
     }
 
 
@@ -84,5 +86,13 @@ public class UserExpenses {
                 ", month='" + month + '\'' +
                 ", expenseAmt='" + expenseAmount + '\'' +
                 '}';
+    }
+
+    public String getDetails() {
+        return details;
+    }
+    public void setDetails(String details){
+        this.details = details;
+
     }
 }

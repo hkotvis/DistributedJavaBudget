@@ -8,12 +8,10 @@
     <h1>This Month's Budget: ${inputBudget.amountMonthly}</h1>
     <h3>Remaining Budget: </h3>
     <form:form action="search" method="GET">
-        Search Expenses <br><input type="search" class="form-control" name="searchTerm"/>
+        Search Expenses <br>
+        <input type="search" class="form-control" name="searchTerm"/>
         <input type="submit" value="Search" class="btn btn-primary"/>
     </form:form>
-    <button style="float: right" type="button" class="btn btn-success" onclick="window.location.href ='printPage.html'">
-        Print Budget
-    </button>
     <br/><br>
     <table style="width:100%">
         <tr>
@@ -37,11 +35,11 @@
             </c:url>
 
             <tr>
-                <td>${tempExp.expenses.expenseName}</td>
+                <td><a href="" onclick="(alert('Details: ${tempExp.details}'))">${tempExp.expenses.expenseName}</a></td>
                 <td>${tempExp.expenseAmount}</td>
                 <td>
                     <a class="btn" href="${deleteLink}" style="float:right;" onclick="if (!confirm('Are you sure?')) return false"><i class="fas fa-trash"></i></a>
-                    <a href="${updateLink}" class="btn" style="float:right;"><i class="fas fa-pen"></i></a>
+                    <a class="btn" href="${updateLink}" style="float:right;"><i class="fas fa-pen"></i></a>
                 </td>
             </tr>
         </c:forEach>
