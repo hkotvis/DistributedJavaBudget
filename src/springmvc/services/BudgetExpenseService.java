@@ -17,13 +17,25 @@ public class BudgetExpenseService implements BudgetService{
 
     @Override
     @Transactional
-    public List<UserExpenses> getExpenses() {
+    public List<Expenses> getExpenses() {
         return budgetDAO.getExpenses();
     }
 
     @Override
     @Transactional
-    public UserExpenses getExpense(int theId) {
+    public Expenses getExpenses(int theId) {
+        return budgetDAO.getExpenses(theId);
+    }
+
+    @Override
+    @Transactional
+    public List<UserExpenses> getUserExpenses() {
+        return budgetDAO.getUserExpenses();
+    }
+
+    @Override
+    @Transactional
+    public UserExpenses getUserExpense(int theId) {
         return budgetDAO.getExpense(theId);
     }
 

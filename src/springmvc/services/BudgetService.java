@@ -6,11 +6,15 @@ import springmvc.entity.UserExpenses;
 import java.util.List;
 
 public interface BudgetService {
-    List<UserExpenses> getExpenses();
+    List<Expenses> getExpenses();
+
+    Expenses getExpenses(int theId);
+
+    List<UserExpenses> getUserExpenses();
 
     void deleteExpense(int theId);
 
-    UserExpenses getExpense(int theId);
+    UserExpenses getUserExpense(int theId);
 
     List<Expenses> getExpenseByName(String theSearchTerm);
 

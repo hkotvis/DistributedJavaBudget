@@ -16,18 +16,17 @@ import java.util.List;
 @Controller
 @RequestMapping("/budget")
 public class BudgetController {
-
     @Autowired
     private BudgetService budgetService;
 
     @RequestMapping("/showBudget")
     public String showBudget(@ModelAttribute ("inputBudget") UserExpenses inputBudget){
-        return "view-budget";
+        return "view-userExpenses";
     }
 
     @GetMapping("/budgetBreakdown") // list expenses
     public String budgetBreakdown(Model theModel){
-        List<UserExpenses> expensesList = budgetService.getExpenses();
+        List<UserExpenses> expensesList = budgetService.getUserExpenses();
         theModel.addAttribute("expenses", expensesList);
         return "view-expense-breakdown";
     }
@@ -45,7 +44,8 @@ public class BudgetController {
         UserExpenses theBudget = new UserExpenses();
         theBudget.setExpenses(new Expenses());
 
-        theModel.addAttribute("budget", theBudget);
+        theModel.addAttribute("userExpenses", theBudget);
+        theModel.addAttribute("expensesList", budgetService.getExpenses());
 
         return "expense-form";
     }
@@ -54,10 +54,11 @@ public class BudgetController {
     public String showUpdateExpenseForm(@RequestParam("userExpenseId") int theId,
                                       Model theModel) {
         // Get expense from the database
-        UserExpenses theBudget = budgetService.getExpense(theId);
+        UserExpenses theBudget = budgetService.getUserExpense(theId);
 
         // Set expense as a model attribute to pre-populate the form
-        theModel.addAttribute("budget", theBudget);
+        theModel.addAttribute("userExpenses", theBudget);
+        theModel.addAttribute("expensesList", budgetService.getExpenses());
 
         // Return the view
         return "expense-form";
@@ -65,12 +66,11 @@ public class BudgetController {
 
 
     @PostMapping("/save")
-    public String saveBudget(@ModelAttribute("budget") UserExpenses theBudget
+    public String saveBudget(@ModelAttribute("userExpenses") UserExpenses theBudget
                            // BindingResult bindingResult,
                             //HttpServletRequest request,
                             //Model theModel
                              ) {
-
         // Use the service to save the expense
         budgetService.saveExpense(theBudget);
 

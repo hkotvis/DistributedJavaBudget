@@ -5,7 +5,6 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:property-placeholder location="classpath:DistributedJavaBudget.properties"/>
     <!-- Data source and connection pool bean -->
     <!-- C3P0 library provides connection pool -->
     <bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
@@ -44,19 +43,38 @@
         <property name="converters">
             <list>
                 <bean class="springmvc.services.converter.StringToDateConverter"/>
+                <bean class="springmvc.services.converter.StringToExpensesConverter"/>
             </list>
         </property>
     </bean>
 
-    <bean id="myConsoleService" class="springmvc.services.ConsoleLogService"></bean>
-    <bean id="myExpenses" class="springxml.beans.Expenses">
-        <property name="logService" ref="myConsoleService"/>
-        <property name="expenseName" value="${e1.name}"/>
-    </bean>
+    <context:component-scan base-package="springmvc"/>
+
 
     <!-- Enable transactional annotations -->
     <tx:annotation-driven transaction-manager="myTransactionManager"/>
 
     <!-- Support for conversion, formatting, and validation -->
     <mvc:annotation-driven conversion-service="myConversionService"/>
+
+    <!-- Configure Spring MVC view resolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- When our application provides a view name, Spring
+         prepends the prefix and appends the suffix to it -->
+
+        <!-- e.g. show-student-list becomes:
+        /WEB-INF/view/show-student-list.jsp -->
+
+        <!-- Basically, where to look for view files -->
+        <!-- Be sure to create this folder! -->
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- Redirect any request starting with /resources/ (including subdirectories)
+         to the /resources/ folder -->
+    <!-- Stops static file requests from going to dispatcher servlet -->
+    <!-- See https://stackoverflow.com/questions/40188743/double-asterisk-in-a-request-mapping/40202997 -->
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"></mvc:resources>
+
 </beans>

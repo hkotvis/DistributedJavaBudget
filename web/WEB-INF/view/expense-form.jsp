@@ -3,15 +3,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="container">
 
-    <form:form action="${contextPath}/budget/save" enctype="multipart/form-data" modelAttribute="budget"
-               method="post">
-        <form:hidden path="userExpenseId" value="${budget.userExpenseId}"/>
+    <form:form action="${contextPath}/budget/save" modelAttribute="userExpenses">
+        <form:hidden path="userExpenseId" value="${userExpenses.userExpenseId}"/>
 
         <table>
             <tr>
                 <td><label>Expense Name</label></td>
-                <td><form:input class="form-control" path="expenses.expenseName"/>
-                    <form:errors path="expenses.expenseName" style="color: red;"/></td>
+                <td><form:select path="expenses" items="${expensesList}" itemLabel="expenseName" itemValue="expenseId"/>
+                    <form:errors path="expenses" style="color: red;"/></td>
             </tr>
             <tr>
                 <td><label>Expense Amount</label></td>
